@@ -12,9 +12,9 @@ async function getVideoUrl(config) {
     let url = '';
 
     if (config.type === 'movie') {
-        url = getCorsUrl(`https://lookmovie.io/manifests/movies/json/${config.id}/${now}/${accessToken}/master.m3u8`);
+        url = getCorsUrl(`https://lookmovie2.to/manifests/movies/json/${config.id}/${now}/${accessToken}/master.m3u8`);
     } else if (config.type === 'show') {
-        url = getCorsUrl(`https://lookmovie.io/manifests/shows/json/${accessToken}/${now}/${config.id}/master.m3u8`);
+        url = getCorsUrl(`https://lookmovie2.to/manifests/shows/json/${accessToken}/${now}/${config.id}/master.m3u8`);
     }
 
     if (url) {
@@ -30,7 +30,7 @@ async function getVideoUrl(config) {
             }
         }
 
-        return videoUrl.startsWith("/") ? getCorsUrl(`https://lookmovie.io/${videoUrl}`) : getCorsUrl(videoUrl);
+        return videoUrl.startsWith("/") ? getCorsUrl(`https://lookmovie2.to/${videoUrl}`) : getCorsUrl(videoUrl);
     }
 
     return "Invalid type.";
@@ -40,9 +40,9 @@ async function getAccessToken(config) {
     let url = '';
 
     if (config.type === 'movie') {
-        url = getCorsUrl(`https://lookmovie.io/api/v1/security/movie-access?id_movie=${config.id}&token=1&sk=&step=1`);
+        url = getCorsUrl(`https://lookmovie2.to/api/v1/security/movie-access?id_movie=${config.id}&token=1&sk=&step=1`);
     } else if (config.type === 'show') {
-        url = getCorsUrl(`https://lookmovie.io/api/v1/security/show-access?slug=${config.slug}&token=&step=2`);
+        url = getCorsUrl(`https://lookmovie2.to/api/v1/security/show-access?slug=${config.slug}&token=&step=2`);
     }
 
     const data = await fetch(url).then((d) => d.json());
@@ -54,7 +54,7 @@ async function getAccessToken(config) {
 }
 
 async function getEpisodes(slug) {
-    const url = getCorsUrl(`https://lookmovie.io/shows/view/${slug}`);
+    const url = getCorsUrl(`https://lookmovie2.to/shows/view/${slug}`);
     const pageReq = await fetch(url).then((d) => d.text());
 
     const data = JSON5.parse("{" +
@@ -70,7 +70,7 @@ async function getEpisodes(slug) {
 }
 
 async function getStreamUrl(slug, type, season, episode) {
-    const url = getCorsUrl(`https://lookmovie.io/${type}s/view/${slug}`);
+    const url = getCorsUrl(`https://lookmovie2.to/${type}s/view/${slug}`);
     const pageReq = await fetch(url).then((d) => d.text());
 
     const data = JSON5.parse("{" +
@@ -108,8 +108,8 @@ async function getStreamUrl(slug, type, season, episode) {
 }
 
 async function findContent(searchTerm, type) {    
-    // const searchUrl = getCorsUrl(`https://lookmovie.io/api/v1/${type}s/search/?q=${encodeURIComponent(searchTerm)}`);
-    const searchUrl = getCorsUrl(`https://lookmovie.io/${type}s/search/?q=${encodeURIComponent(searchTerm)}`);
+    // const searchUrl = getCorsUrl(`https://lookmovie2.to/api/v1/${type}s/search/?q=${encodeURIComponent(searchTerm)}`);
+    const searchUrl = getCorsUrl(`https://lookmovie2.to/${type}s/search/?q=${encodeURIComponent(searchTerm)}`);
     const searchRes = await fetch(searchUrl).then((d) => d.text());
     
     // Parse DOM to find search results on full search page
