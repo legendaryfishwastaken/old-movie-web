@@ -133,7 +133,7 @@ export function SearchView() {
                 ))}
             </Card>
             <div className="topRightCredits">
-                <a href="https://github.com/JamesHawkinss/movie-web" target="_blank" rel="noreferrer">Check it out on GitHub <Arrow/></a>
+                <a href="https://github.com/legendaryfishwastaken/old-movie-web" target="_blank" rel="noreferrer">Check it out on GitHub <Arrow/></a>
             </div>
         </div>
     )
