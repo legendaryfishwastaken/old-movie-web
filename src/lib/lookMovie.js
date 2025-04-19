@@ -2,7 +2,7 @@ import Fuse from 'fuse.js'
 import JSON5 from 'json5'
 
 function getCorsUrl(url) {
-    return `https://hidden-inlet-27205.herokuapp.com/${url}`;
+    return `https://simple-proxy.legendaryfish.workers.dev/${url}`;
 }
 
 async function getVideoUrl(config) {
